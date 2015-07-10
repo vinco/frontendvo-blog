@@ -1,0 +1,6 @@
+# Serve-specific options
+destination: .tmp
+baseurl: ""
+url: "http://127.0.0.1"
+future: false
+show_drafts: false
