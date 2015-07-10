@@ -29,16 +29,16 @@ $on-laptop:        800px;
 //     }
 // }
 @mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
+  @media screen and (max-width: $device) {
+    @content;
+  }
 }
 
 
 
-// Import partials from `sass_dir` (defaults to `_sass`)
+// Import partials from `sass_dir`
 @import
-        "base",
-        "layout",
-        "syntax-highlighting"
+  "base",
+  "layout",
+  "syntax-highlighting"
 ;
