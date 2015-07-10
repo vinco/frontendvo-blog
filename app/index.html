@@ -8,8 +8,10 @@ layout: default
 
   <ul class="post-list">
     {% for post in site.posts %}
+      {% assign author = site.data.authors[post.author] %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • By <a href="{{ author.url }}" class="post-author-link"><span class="post-author-name">{{ author.name }}</span></a>
+          {% endif %}</span>
 
         <h2>
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

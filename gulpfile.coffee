@@ -65,9 +65,11 @@ gulp.task 'moveFiles', ['scripts', 'styles'], ->
     'app/*.md'
     'app/*.xml'
     'app/*.html'
+    'app/_data/**/*'
     'app/_layouts/**/*'
     'app/_posts/**/*'
     'app/_includes/**/*'
+    'app/p/**/*' # Pagination template
     'app/images/**/*'
     'app/fonts/**/*'
   ]
@@ -165,9 +167,11 @@ gulp.task 'serve', ['jekyll:tmp', 'fonts'], ->
   gulp.watch [
     'app/*.md'
     'app/*.html'
+    'app/_data/**/*'
     'app/_includes/**/*'
     'app/_layouts/**/*'
     'app/_posts/**/*'
+    'app/p/**/*'
     '_config.yml'
     '_config.serve.yml'
   ]
