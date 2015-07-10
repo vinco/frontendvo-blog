@@ -4,6 +4,9 @@ Front-end stuff by our team!
 
 ## TODO
 
+* Multi-author support
+  * Including the ability to list all post by a given author, with pagination
+  * Also the ability to have each author have their own directory, e.g. `app/blogs/<author name>`
 * Make it not look ugly
 * Use a proper domain name other than github.io (this will also require changes to `_config.yml`)
 
@@ -32,7 +35,23 @@ There are various ways to contribute, depending on the type of contribution. But
 3. [Squash your commits](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits)
 4. Submit a PR
 
+
 Keep each PR focused on a specific type of contribution. For example, don't mix a post with a general code fix in a single PR. Instead, submit the post and the fix as two separate PRs.
+
+## Your authorship
+
+Make sure your own info is located in `app/_data/authors/<name>.yml`. You can pick any name, but this is what you will need to use in the front matter of your posts.
+
+Take this example: ([app/_data/authors/jaromero.yml](app/_data/authors/jaromero.yml))
+
+    name: 'Antonio Romero'
+    email: 'ar@manoderecha.mx'
+    url: 'http://pulsar.mx/'
+    twitter: 'ja_romero'
+    github: 'jaromero'
+    avatar: 'https://avatars.githubusercontent.com/u/794031?v3'
+
+Currently `name`, `url` and `avatar` are required, but only because that's what the templates use. Suggestions on how to display author info are welcome.
 
 ### Commit messages
 
@@ -75,11 +94,11 @@ Posts require [front matter](http://jekyllrb.com/docs/frontmatter/) at the very 
     layout: post
     title:  "Welcome to Jekyll!"
     date:   2015-07-09 17:30:47
-    categories: cat1 cat2 cat3
-    author: github_username
+    tags:   tag1 tag2 tag3
+    author: your_own_authors_yml_file
     ---
 
-Author should be your github username. This will be used to output your avatar, and maybe some links.
+_(See above for authorship info)_
 
 ### Pages
 
