@@ -2,10 +2,10 @@
 
 gulp        = require 'gulp'
 browserSync = require 'browser-sync'
-del         = require 'del'
 $           = require('gulp-load-plugins')()
 wiredep     = require('wiredep').stream
 shell       = require 'shelljs'
+runSequence = require 'run-sequence'
 
 reload = browserSync.reload
 
@@ -134,27 +134,43 @@ gulp.task 'extras', ->
 gulp.task 'clean', ->
   # Clean staging, tmp and _site dirs
   # Only really necessary for build
-  del [
+  gulp.src [
     '.staging'
     '.tmp'
     'dist/**/*'
     'dist/.*'
     '!dist/.git'
-  ]
+  ],
+    dot: true
+  .pipe $.clean()
+
+gulp.task 'cleanStray', ->
+  # Removes stray files from staging after useref is done with them
+  gulp.src [
+    '.staging/_includes/scripts'
+    '.staging/_includes/styles'
+  ],
+    dot: true
+  .pipe $.clean()
 
 # Basic entry point
-gulp.task 'build', ['jekyll', 'images', 'fonts', 'extras'], ->
-  # Remove stray files from staging, just in case
-  del ['.staging/_includes/scripts', '.staging/_includes/styles']
+gulp.task 'build', ->
+  # Clean first, then the rest
+  runSequence 'clean',
+    ['jekyll', 'images', 'fonts', 'extras'],
+    ['cleanStray', 'size']
 
+gulp.task 'size', ->
   # Size up the whole thing
   gulp.src 'dist/**/*'
     .pipe $.size {title: 'build', gzip: true}
 
-gulp.task 'serve', ['jekyll:tmp', 'fonts'], ->
+gulp.task 'serve', ->
+  # Clean first, then the rest
+  runSequence 'clean', ['jekyll:tmp', 'fonts'], 'browsersync'
+
+gulp.task 'browsersync', ->
   # Run the web server
-  # Build a temporary jekyll site out of the staging dir
-  # and map the temp dir into the browsersync server
   browserSync
     notify: false
     port: 9000

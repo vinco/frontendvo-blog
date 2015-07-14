@@ -11,7 +11,6 @@
   "devDependencies": {
     "browser-sync": "^2.7.13",
     "coffee-script": "^1.9.3",
-    "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-cache": "^0.2.10",
@@ -34,6 +33,7 @@
     "gulp-uglify": "^1.2.0",
     "gulp-useref": "^1.2.0",
     "main-bower-files": "^2.8.2",
+    "run-sequence": "^1.1.1",
     "shelljs": "^0.5.1",
     "wiredep": "^2.2.2"
   }
