@@ -6,6 +6,7 @@ $           = require('gulp-load-plugins')()
 wiredep     = require('wiredep').stream
 shell       = require 'shelljs'
 runSequence = require 'run-sequence'
+del         = require 'del'
 
 reload = browserSync.reload
 
@@ -70,7 +71,7 @@ gulp.task 'moveFiles', ['scripts', 'styles'], ->
     'app/_posts/**/*'
     'app/_includes/**/*'
     'app/p/**/*' # Pagination template
-    'app/images/**/*'
+    # 'app/images/**/*'
     'app/fonts/**/*'
   ]
 
@@ -134,30 +135,25 @@ gulp.task 'extras', ->
 gulp.task 'clean', ->
   # Clean staging, tmp and _site dirs
   # Only really necessary for build
-  gulp.src [
+  del [
     '.staging'
     '.tmp'
     'dist/**/*'
     'dist/.*'
-    '!dist/.git'
-  ],
-    dot: true
-  .pipe $.clean()
+  ]
 
 gulp.task 'cleanStray', ->
   # Removes stray files from staging after useref is done with them
-  gulp.src [
+  del [
     '.staging/_includes/scripts'
     '.staging/_includes/styles'
-  ],
-    dot: true
-  .pipe $.clean()
+  ]
 
 # Basic entry point
-gulp.task 'build', ->
+gulp.task 'build', ['clean'], ->
   # Clean first, then the rest
-  runSequence 'clean',
-    ['jekyll', 'images', 'fonts', 'extras'],
+  runSequence ['jekyll', 'fonts', 'extras'],
+    'images',
     ['cleanStray', 'size']
 
 gulp.task 'size', ->
@@ -165,9 +161,9 @@ gulp.task 'size', ->
   gulp.src 'dist/**/*'
     .pipe $.size {title: 'build', gzip: true}
 
-gulp.task 'serve', ->
+gulp.task 'serve', ['clean'], ->
   # Clean first, then the rest
-  runSequence 'clean', ['jekyll:tmp', 'fonts'], 'browsersync'
+  runSequence ['jekyll:tmp', 'fonts'], 'browsersync'
 
 gulp.task 'browsersync', ->
   # Run the web server
@@ -224,7 +220,8 @@ gulp.task 'deploy', ['build'], ->
   # Deploy to Github Pages
   gulp.src 'dist'
     .pipe $.subtree()
-    .pipe $.clean()
+
+  del ['dist']
 
 # Default task
 gulp.task 'default', ['build']
