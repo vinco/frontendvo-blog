@@ -5,7 +5,7 @@ layout: default
 <!-- This loops through the paginated posts -->
 {% for post in paginator.posts %}
   {% assign author = site.data.authors[post.author] %}
-  <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+  <h1><a href="{{ post.url }}:9000">{{ post.title }}</a></h1>
   <p class="author">
     <span class="meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • By <a href="{{ author.url }}" class="post-author-link"><span class="post-author-name"><img src="{{ author.avatar }}" class="post-author-avatar"> {{ author.name }}</span></a>
       {% endif %}

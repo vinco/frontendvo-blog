@@ -1,25 +1,31 @@
 ---
 layout: default
 ---
-
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      {% assign author = site.data.authors[post.author] %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}{% if post.author %} • By <a href="{{ author.url }}" class="post-author-link"><span class="post-author-name">{{ author.name }}</span></a>
-          {% endif %}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+<div class="posts">
+  <div class="content full-bleed" id="recent-posts">
+  {% for post in site.posts limit:25 %}<a
+    href="{{site.url}}:9000{{post.url}}" class="post-excerpt{% if post.photo_url %} photo{% endif %}">
+      <div class="padded-content">
+        <div class="title">{{ post.title }}</div>
+      {% if post.photo_url %}
+        <div class="image" style="background-image:url('{{ post.photo_url }}')"></div>
+      {% else %}
+        <!-- <div class="title">{{ post.title }}</div> -->
+        <info datetime="{{ page.date | date: "%Y-%m-%d" }}">
+          {{ post.date | date: "%b %Y" }}
+        </info>
+        {% if post.description %}
+        <span class="body">{{ post.description | strip_html }}</span>
+        {% else %}
+        <span class="body">{{ post.excerpt | strip_html }}</span>
+        {% endif %}
+      {% endif %}<!-- post.photo_url -->
+      </div>
+    </a>{% endfor %}
+    <div class="breaker"></div>
+    <div class="end">
+      <a href="{{site.url}}:9000/archive/">More...</a>
+    </div>
+  </div>
 </div>
+{% include pagescript.html %}

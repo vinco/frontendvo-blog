@@ -1,19 +1,37 @@
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {% if page.title != "Archive (sidebar)" %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endif %}
+    <link href='http://fonts.googleapis.com/css?family=Poly:400,400italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" media="screen, projection" href="{{site.url}}:9000/res/screen.css" type="text/css">
+    <link rel="stylesheet" media="print" href="{{site.url}}:9000:9000/res/print.css" type="text/css">
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{{ site.description }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{site.owner.twitter}}">
 
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
+    {% if page.title %}
+    <meta property="og:title" content="{{ page.title }}">
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    <meta name="og:description" content="{{ page.description }}">
+    {% else if content %}
+    <meta name="description" content="{{ content | strip_html | truncatewords: 25 }}">
+    <meta name="og:description" content="{{ content | strip_html | truncatewords: 25 }}">
+    {% endif %}
+    {% else %}
+    <meta name="description" content="{{site.description}}">
+    {% endif %}
 
-    <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="/styles/main.css">
-    <!-- endbuild -->
-
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <meta property="og:url" content="{{site.url}}:9000/{{ page.url | remove_first:'index.html' }}">
+    <meta property="og:site_name" content="{{site.title}}">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="en_GB" />
+    {% if page.date %}
+    <meta property="article:published_time" content="{{ page.date | date: "%Y-%m-%d" }}">
+    {% endif %}
+    <!-- Add custom CSS here -->
+    <link href="{{site.url}}:9000/assets/css/font-awesome.min.css" rel="stylesheet">
 </head>
