@@ -6,7 +6,11 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "components-font-awesome": "~4.4.0",
     "jquery": "~2.1.4",
-    "lodash": "~3.10.0"
+    "lodash": "~3.10.0",
+    "modernizr-min": "~2.8.3",
+    "normalize-css": "normalize.css#~3.0.3",
+    "responsive-nav": "~1.0.39"
   }
 }
