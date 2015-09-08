@@ -6,68 +6,66 @@ categories: ember emberjs javascript front-end frameworks
 author: carolfc
 ---
 
-The world of **JavaScript** frameworks in increasingly crowded is among the most prominent with **Angularjs and BackboneJS**, we find **EmberJS.** This could be considered a powerful intermediary between its competitors, it serves to both major projects and those who do not need too many features. In this article we will learn how to install and create our first application, EmberJS.
+The JavaScript frameworks world is getting more and more crowded. Together with such famous frameworks as angularJS and backboneJS, we find emberJS. The main advantage of EmberJS against its competitors is that it can be used for both, major and minor projects. In this article we will learn how to install and create our first application thanks to emberJS.
 
 
 ## Installation
 
-Installation is very simple, we'll just have installed on your computer: nodejs and **NPM** system packages (Who does not already have it?), we also need have git installed.
+The installation is very easy. Previously, we should have installed git and nodeJS and its package manager npm (Who hasn't done it yet?).
 
-To verify that we have installed and which version nodejs have write in a console:
+To check if we have already installed nodeJS or not or its version, we must write to the console:
 
     `node --version`
 
-With this you can start installing **emberJS** and its dependencies, using the packaging system of nodejs (NPM):
+After this, we can install emberJS and its dependencies, using the nodeJS package manager: npm.
 
     `npm install -g ember-cli`
 
-If we're on Linux or Mac, you should do so as root, if we are in Windows as administrator.
+Linux and Mac users must be logged in as the root user, Windows users as the administrator.
 
-We will also install **PhanthomJS** to perform and run our **test**.
+We will also install phantomJS to perform and run our tests.
 
     `npm install -g phanthomjs2`
 
-This is all !! we have emberjs!!.
-
- Check our version:
+That is all! EmberJS is already installed in our computer. Let's check:
 
     `ember -v`
 
 
 ## Creating my first app
 
-**Ember** has its own **generator** for most everyday tasks we have to perform when we're developing an app with it. We started using this generator to create the basic structure of our application:
+EmberJS has its own generator for most everyday tasks we have to perform when we are developing an app with it. We should use this generator to create the basic structure of our application:
 
     `ember new name-my-vinco-app`
 
-This creates a folder with the name that you have given to your application, in this case name-my-vinco-app. Now if we go into our folder and we started our server, we see our first application running!!.
+So, a new folder will be created with the name we provided to our application; in this case: name-my-vinco-app. After this, if we go into our folder and we run our server, we will see our first application running!.
 
     `cd name-my-vinco-app`
     `ember server`
 
-If all goes well, we will see our first application running on [http://localhost:4200](http://localhost:4200) . This will be our address local testing and development.
+If all goes well, our local testing and development address will be [http://localhost:4200](http://localhost:4200).
 
-As our future intention is to have our application in a production server, when we finish working with her and want to move it, we will compile our environment:
+As our future intention is to have our application in a production server, we will need to compile our environment when we finish working with it and want to move it:
 
     `ember build --environment=production`
 
-This will create a folder on us dist / directory with everything you need to run in a production environment.
+This will generate a folder on our dist/directory with everything we need to run in a production environment.
 
-With this we would have the basics to start our journey with ember!
+With this we will have the basics to start our journey with emberJS!
 
 ## Basic concepts
 
-Emberjs is not a MVC framework * anyone as components have also apart from models, views (templates), controllers and routes.
+EmberJS is not a MVC* framework like anything else, since it has models, views (templates), controllers and routes, apart from components.
 
 
 ##### **MODEL, VIEW, CONTROLLER**
 
-Emberjs automatically creates us once our application we created our first model and the view or controller. We all prepared to work anyway if we need anything extra, we can also create it manually or through ember generator.
+EmberJS creates the first model, view and controller in our application automatically. However, we can create our MVC manually or through ember generator as well.
 
-In this case almost everything works like any framework, in the view we can call the instances we created on the controller, always with {{ }}, and use our models in our controller.
+In this case, almost everything works like in any other framework: in the view we can call the instances we have generated on the controller, always with {{ }}, and use our models in our controller.
 
 ##### **COMPONENTS**
 
-The components are small pieces of code that can include tags in the  views. We can create them through a certain logic in controller or enter them.
+Components are small code pieces that we can include as tags in a view. We can create them adding certain logic through our controller or the component itself.
 
-And you, you have not already created your first application with emberjs? what are you waiting for?!!
+And you, you not created your first application with emberjs yet? what are you waiting for?!!
