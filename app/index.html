@@ -5,17 +5,14 @@ layout: default
 <div class="home" id="home">
   <h1 class="pageTitle">Recent Posts</h1>
   <ul class="posts noList">
-  {% for post in site.posts %}
-    <h4><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
-    <p>{{ post.content | strip_html | strip_newlines | truncate: 250}}</p>
-{% endfor %}
-
     {% for post in paginator.posts %}
-      <li>
-        <span class="date">{{ post.date | date: '%B %d, %Y' }}</span>
-        <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
-        <p class="description">{% if post.description %}{{ post.description | strip_html | strip_newlines | truncate: 250 }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 250 }}{% endif %}</p>
-      </li>
+    <li>
+      <span class="date">{{ post.date | date: '%B %d, %Y' }}</span>
+      <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+      <span class="post-meta">{% if post.author %}  By <a href="{{ author.url }}" class="post-author-link"><span class="post-author-name">{{ post.author }}</span></a>
+          {% endif %}</span>
+      <p class="description">{% if post.description %}{{ post.description | strip_html | strip_newlines | truncate: 250 }}{% else %}{{ post.content | strip_html | strip_newlines | truncate: 250 }}{% endif %}</p>
+    </li>
     {% endfor %}
   </ul>
   <!-- Pagination links -->

@@ -40,7 +40,6 @@ img,video,audio,iframe,object{
 
 // Layout
 .container {
-	@include container(610px);
 	padding: 0 20px;
 }
 
@@ -169,7 +168,7 @@ HEADER STYLING
 
 .header {
 	background-color: seagreen;
-	background-image: url('https://static.pexels.com/photos/5124/hands-music-musician-piano.jpeg');
+	background-image: url('http://vincoorbis.com/images/bg-home.jpg');
 	background-size: cover;
 	background-position: center center;
 	color: white;
@@ -178,7 +177,6 @@ HEADER STYLING
 
 	.container {
 		padding: 0;
-		@include container(100%);
 	}
 
 	h1 {
@@ -319,7 +317,7 @@ POST NAV STYLING
 			-ms-transform: translateY(-50%);
 			transform: translateY(-50%);
 			left: 0;
-			width: 100%;.
+			width: 100%;
 			height: auto;
 		}
 
@@ -373,11 +371,11 @@ FOOTER STYLING
 .footer {
 	text-align: center;
 	padding: 2rem 0;
+  margin-top: 125px;
 
 	.container {
 		border-top: 4px solid darken(white, 15%);
 		padding-top: .5em;
-		@include container(90%);
 	}
 
 	.copy, .footer-links {
@@ -429,6 +427,13 @@ FOOTER STYLING
 			}
 		}
 	}
+  .fa-github{
+    margin-left: 250px;
+  }
+  #download{
+    margin-top: -32px;
+    margin-right: -40px;
+  }
 }
 
 
@@ -444,6 +449,11 @@ PAGINATION STYLING
 	.previous {
 		float: right;
 	}
+  .button__outline:hover{
+    background: transparent;
+    color: #EE0149;
+    width: auto;
+  }
 }
 
 
@@ -486,4 +496,3 @@ POST LIST STYLING
 		}
 	}
 }
-

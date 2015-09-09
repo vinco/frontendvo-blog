@@ -8,9 +8,9 @@ GLOBAL STYLES
 	z-index: 1;
 
 	&:after {
-		z-index: -1; 
+		z-index: -1;
 		background: white;
-		content: ""; 
+		content: "";
 		display: block;
 		width: 100%;
 		height: 5em;
@@ -22,25 +22,53 @@ GLOBAL STYLES
 		transform: skewY(-2deg);
 		-webkit-transform-origin: bottom left;
 		-ms-transform-origin: bottom left;
-		transform-origin: bottom left; 
+		transform-origin: bottom left;
 	}
 }
-
 .container {
-	@include container(800px); 
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 0;
 }
-
+.fa{
+	margin-left: 20px;
+	font-size: 25px;
+}
+a{
+	color: #EE0149;
+}
+li{
+	list-style: none;
+}
+.post .postTitle{
+	font-weight: 300;
+}
+.prev:hover,.next:hover{
+	background-color: #EE0149;
+	color: #fff;
+	width: 200px;
+}
 
 /***************
 HOMEPAGE STYLING
 ***************/
 
 #home {
+	h4,h3,h2,h1,h5{
+		a{
+			color: #EE0149;
+			font-weight: 300;
+			font-size: 25px;
+		}
+	}
 	.posts, .pageTitle, .pagination {
-		@include span(9 of 12);
+		width: 74.46809%;
+		float: left;
+		margin-right: 2.12766%;
 		float: none;
 		margin: 0 auto 1.5em;
+		font-weight: 300;
 	}
 
 	.pageTitle {
@@ -60,18 +88,22 @@ HEADER STYLING
 
 	.container {
 		position: relative;
-		top: 50%;
-		-webkit-transform: translateY(-50%);
-		-ms-transform: translateY(-50%);
-		transform: translateY(-50%);
-		@include container(800px); 
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 	}
 
 	h1 {
+		font-weight: 300;
 		font-size: 3em;
 		line-height: 1;
 		letter-spacing: -3px;
 		padding-left: 0;
+		margin-top: -30px;
 	}
 
 	nav {
@@ -100,7 +132,7 @@ HEADER STYLING
 
 				&.current {
 					padding-bottom: .25em;
-					border-bottom: 4px solid rgba(255,255,255,.4); 
+					border-bottom: 4px solid rgba(255,255,255,.4);
 				}
 			}
 		}
@@ -119,7 +151,7 @@ MENU STYLING
 	  max-height: none;
 
 		&.closed {
-		  max-height: none; 
+		  max-height: none;
 		}
 
 		ul li a {
@@ -139,13 +171,12 @@ POST STYLING
 
 .post {
 	h1, h2, h3, h4, h5, h6, p, ul, ol, dl, .pageTitle {
-		@include span(9 of 12); 
 		float: none;
-		margin: 0 auto 2rem; 
+		margin: 0 auto 2rem;
 	}
 
 	h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-		margin: 1rem auto; 
+		margin: 1rem auto;
 	}
 
 	.pageTitle {
@@ -213,7 +244,6 @@ FOOTER STYLES
 
 	.container {
 		padding: 1rem 0;
-		@include container(800px);
 	}
 }
 
@@ -221,13 +251,3 @@ FOOTER STYLES
 /***************
 CONTACT PAGE STYLING
 ***************/
-
-.contactContent {
-	@include span(6 of 12);
-}
-
-#contact {
-	form {
-		@include span(6 of 12 last);
-	}
-}
