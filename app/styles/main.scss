@@ -1,44 +1,24 @@
-@charset "utf-8";
+@import "/bower_components/normalize-css/normalize.css";
+// Import fonts from Google
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,800);
+@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic);
 
-// Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+// Site configuration
+@import "config";
 
-$spacing-unit:     30px;
+// Modules
+@import "modules/buttons";
+@import "modules/forms";
+@import "modules/tables";
+@import "modules/syntax";
 
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+// Import Partials
+@import "partials/typography";
+@import "partials/mixins";
+@import "partials/grid";
 
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+// Mobile up base styles
+@import "breakpoints/mobileup";
 
-$on-palm:          600px;
-$on-laptop:        800px;
-
-
-
-// Using media queries with like this:
-// @include media-query($palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-@mixin media-query($device) {
-  @media screen and (max-width: $device) {
-    @content;
-  }
-}
-
-
-
-// Import partials from `sass_dir`
-@import
-  "base",
-  "layout",
-  "syntax-highlighting"
-;
+// Import media queries add more as you desire
+@media only screen and (min-width: 800px) { @import "breakpoints/800up";}

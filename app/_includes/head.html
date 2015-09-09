@@ -5,15 +5,17 @@
 
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{{ site.description }}">
-
+    <link rel="icon" type="image/x-icon" href="{{ "/assets/img/favicon.ico" | prepend: site.baseurl }}" />
     <!-- build:css styles/vendor.css -->
+        <link rel="stylesheet" href="{{ "/styles/main.css" | prepend: site.baseurl }}">
+        <link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/font-awesome.min.css">
     <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/responsive-nav/responsive-nav.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="/styles/main.css">
     <!-- endbuild -->
-
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 </head>
