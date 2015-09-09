@@ -102,6 +102,8 @@ gulp.task 'useref', ['moveFiles'], ->
     .pipe $.useref userefOpts
     .pipe gulp.dest '.staging/_includes'
 
+gulp.task 'assets', ['images', 'fonts']
+
 gulp.task 'images', ->
   # Optimize images
   gulp.src 'app/images/**/*'
@@ -115,13 +117,16 @@ gulp.task 'images', ->
     .pipe gulp.dest 'dist/images'
 
 gulp.task 'fonts', ->
+  gulp.src '.tmp/fonts/**/*'
+    .pipe gulp.dest 'dist/fonts'
+
+gulp.task 'wireFonts', ->
   # Copy font files obtained with bower
   bowerFiles = require 'main-bower-files'
 
   gulp.src bowerFiles({filter: '**/*.{eot,svg,ttf,woff,woff2}'
   }).concat 'app/fonts/**/*'
     .pipe gulp.dest '.tmp/fonts'
-    .pipe gulp.dest 'dist/fonts'
 
 gulp.task 'extras', ->
   # Copy all files not handled by jekyll or other gulp tasks
@@ -152,8 +157,8 @@ gulp.task 'cleanStray', ->
 # Basic entry point
 gulp.task 'build', ['clean'], ->
   # Clean first, then the rest
-  runSequence ['jekyll', 'fonts', 'extras'],
-    'images',
+  runSequence ['jekyll', 'wireFonts', 'extras'],
+    'assets',
     ['cleanStray', 'size']
 
 gulp.task 'size', ->
@@ -163,7 +168,7 @@ gulp.task 'size', ->
 
 gulp.task 'serve', ['clean'], ->
   # Clean first, then the rest
-  runSequence ['jekyll:tmp', 'fonts'], 'browsersync'
+  runSequence ['jekyll:tmp', 'wireFonts'], 'browsersync'
 
 gulp.task 'browsersync', ->
   # Run the web server
@@ -199,18 +204,22 @@ gulp.task 'browsersync', ->
   # Path-specific tasks
   gulp.watch 'app/scripts/**/*.{coffee,litcoffee}', ['reloadAfterScripts']
   gulp.watch 'app/styles/**/*.scss', ['styles']
-  gulp.watch 'app/fonts/**/*', ['fonts']
-  gulp.watch 'bower.json', ['wiredep', 'fonts']
+  gulp.watch 'app/fonts/**/*', ['wireFonts']
+  gulp.watch 'bower.json', ['wiredep', 'wireFonts']
 
 gulp.task 'wiredep', ->
   # Insert bower dependencies into files
-  gulp.src 'app/_sass/*.scss'
+  gulp.src 'app/_sass/main.scss'
     .pipe $.debug()
     .pipe wiredep
       ignorePath: /^(\.\.\/)+/
     .pipe gulp.dest 'app/_sass'
 
-  gulp.src 'app/_includes/*.html'
+  gulp.src [
+    'app/_includes/footer.html'
+    'app/_includes/head.html'
+    'app/_includes/header.html'
+  ]
     .pipe $.debug()
     .pipe wiredep
       ignorePath: /^(\.\.\/)*\.\./
