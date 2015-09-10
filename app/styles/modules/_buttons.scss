@@ -63,9 +63,9 @@ BUTTON DEFAULTS
   background-color: transparent;
   border: 3px solid $primary-color;
   color: $primary-color;
-
   &:hover {
-    background-color: $primary-color;
-    color: $white;
+    background-color: transparent !important;
+     color: $primary-color !important;
+     width: auto !important;
   }
 }
