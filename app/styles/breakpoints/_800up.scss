@@ -36,7 +36,7 @@ GLOBAL STYLES
 	font-size: 25px;
 }
 a{
-	color: #EE0149;
+	color: $primary-color;
 }
 li{
 	list-style: none;
@@ -45,7 +45,7 @@ li{
 	font-weight: 300;
 }
 .prev:hover,.next:hover{
-	background-color: #EE0149;
+	background-color: $primary-color;
 	color: #fff;
 	width: 200px;
 }
@@ -57,7 +57,7 @@ HOMEPAGE STYLING
 #home {
 	h4,h3,h2,h1,h5{
 		a{
-			color: #EE0149;
+			color: $primary-color;
 			font-weight: 300;
 			font-size: 25px;
 		}

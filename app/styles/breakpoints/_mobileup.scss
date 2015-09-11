@@ -29,7 +29,7 @@ body {
 }
 
 ::selection {
-	background: $primary-color;
+	background: $primary-color ;
 	color: white;
 }
 
@@ -371,6 +371,7 @@ FOOTER STYLING
 .footer {
 	text-align: center;
 	padding: 2rem 0;
+  margin-top: 125px;
 
 	.container {
 		border-top: 4px solid darken(white, 15%);
