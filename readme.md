@@ -136,3 +136,9 @@ gulp should work just fine. It does most of the things that you're already used 
 By default, [gulp-subtree](https://github.com/Snugug/gulp-subtree) pushes to the `gh-pages` branch of the `origin` remote (and will create the branch if needed), with the message 'Distribution Commit'. Passing an options object will allow you to override these defaults.
 
 Do note that it will **delete the target branch completely** before pushing, and thus the branch will always contain one commit with the entire build. So don't use it to push to `master` or to any other branch you actually care about.
+
+## License
+
+[CC-BY-SA](http://creativecommons.org/licenses/by-sa/4.0/) for content (anything in `app/images` and `app/_posts`)
+
+[MIT](LICENSE) for everything else
